@@ -23,6 +23,7 @@ using namespace std;
 double cameraAngle;
 double cameraRadius;
 double cameraHeight;
+double chandelierAngle;
 
 
 
@@ -116,8 +117,9 @@ void display(){
 	//drawChimney();
 
 	// chandelier
-	drawChandelier();
-
+	drawChandelier(chandelierAngle);
+	//curve();
+	//cup();
 	// test
 	//drawTest();
 
@@ -193,7 +195,8 @@ void display(){
 void animate(){
 	//codes for any changes in Camera
 
-	cameraAngle += 0.002;	// camera will rotate at 0.002 radians per frame.
+	//cameraAngle += 0.002;	// camera will rotate at 0.002 radians per frame.
+	chandelierAngle += 0.4;
 
 	//codes for any changes in Models
 
@@ -204,8 +207,10 @@ void animate(){
 void init(){
 	//codes for initialization
 	cameraAngle = 0;	//// init the cameraAngle
-	cameraRadius = 150;
+	cameraRadius = 100;
 	cameraHeight = 50;
+
+	chandelierAngle = 0;
 
 	//clear the screen
 	glClearColor(BLACK, 0);
