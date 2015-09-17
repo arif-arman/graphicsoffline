@@ -14,6 +14,7 @@
     <ClCompile Include="1005046.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="chair.h" />
     <ClInclude Include="chandelier.h" />
     <ClInclude Include="chimney.h" />
     <ClInclude Include="glass.h" />

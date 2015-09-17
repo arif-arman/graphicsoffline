@@ -47,5 +47,8 @@
     <ClInclude Include="test.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="chair.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

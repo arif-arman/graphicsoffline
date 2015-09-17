@@ -10,6 +10,7 @@
 #include "kitchenCabinetUpper.h"
 #include "chimney.h"
 #include "chandelier.h"
+#include "chair.h"
 #include "test.h"
 
 using namespace std;
@@ -117,9 +118,12 @@ void display(){
 	//drawChimney();
 
 	// chandelier
-	drawChandelier(chandelierAngle);
+	//drawChandelier(chandelierAngle);
 	//curve();
 	//cup();
+
+	// chair
+	drawChair();
 	// test
 	//drawTest();
 
@@ -196,7 +200,7 @@ void animate(){
 	//codes for any changes in Camera
 
 	//cameraAngle += 0.002;	// camera will rotate at 0.002 radians per frame.
-	chandelierAngle += 0.4;
+	//chandelierAngle += 0.4;
 
 	//codes for any changes in Models
 
