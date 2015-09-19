@@ -113,10 +113,10 @@ void drawWalls() {
 	double posy = cameraRadius*sin(cameraAngle);
 	cout << posx << " " << posy << endl;
 	
-	if ((posx >= 0 && posy >= 0) || (posx <0 && posy >=0)) drawWall1(80,100);
-	if ((posx < 0 && posy < 0) || (posx >= 0 && posy < 0)) drawWall1(-80, 100);
-	if ((posx >=0 && posy >= 0) || (posx >=0 && posy < 0)) drawWall2(-80, 100);
-	if ((posx < 0 && posy >= 0) || (posx < 0 && posy < 0)) drawWall2(80, 100);
+	if ((posx >= 0 && posy >= 0) || (posx <0 && posy >=0) || centerCamera) drawWall1(80,100);
+	if ((posx < 0 && posy < 0) || (posx >= 0 && posy < 0) || centerCamera) drawWall1(-80, 100);
+	if ((posx >= 0 && posy >= 0) || (posx >= 0 && posy < 0) || centerCamera) drawWall2(-80, 100);
+	if ((posx < 0 && posy >= 0) || (posx < 0 && posy < 0) || centerCamera) drawWall2(80, 100);
 	
 
 }
@@ -262,7 +262,7 @@ void display(){
 	//	gluLookAt(-30,-30,50,	0,0,0,	0,0,1);
 
 	if (!centerCamera) gluLookAt(cameraRadius * cos(cameraAngle), cameraRadius * sin(cameraAngle), cameraHeight, 0, 0, 0, 0, 0, 1);
-	else gluLookAt(0,0, 10, cameraRadius*cos(cameraAngle), cameraRadius*sin(cameraAngle), 10,  0, 0, 1);
+	else gluLookAt(0,0, cameraHeight, cameraRadius*cos(cameraAngle), cameraRadius*sin(cameraAngle), cameraHeight-10,  0, 0, 1);
 	//NOTE: the camera still CONSTANTLY looks at the center
 
 
@@ -460,6 +460,14 @@ void keyboardListener(unsigned char key, int x, int y){
 	switch (key){
 
 	case '1':	//reverse the rotation of camera
+		if (centerCamera) {
+			cameraRadius = 200;
+			cameraHeight = 100;
+		}
+		else {
+			cameraRadius = 20;
+			cameraHeight = 70;
+		}
 		centerCamera = !centerCamera;
 		break;
 
