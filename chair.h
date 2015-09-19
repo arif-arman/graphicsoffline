@@ -136,25 +136,36 @@ void drawChair() {
 		glPopMatrix();
 
 		glPushMatrix(); {
-			glColor3f(1, 0, 0);
+			glColor3f(0.3, 0.03, 0.03);
 			glRotatef(15, 1, 0, 0);
 			glTranslatef(8, 10, -10);
 			leg();
 		}
 		glPopMatrix();
 		glPushMatrix(); {
-			glColor3f(1, 0, 0);
+			glColor3f(0.3, 0.03, 0.03);
 			glRotatef(15, 1, 0, 0);
 			glTranslatef(-8, 10, -10);
 			leg();
 		}
 		glPopMatrix();
 		glPushMatrix(); {
-			glColor3f(1, 0, 0);
+			glColor3f(0.3, 0.03, 0.03);
 			glRotatef(180, 0, 0, 1);
 			glPushMatrix(); {
-				glRotatef(-15, 1, 0, 0);
-				glTranslatef(6, 5, -10);
+				glRotatef(15, 1, 0, 0);
+				glTranslatef(-8, -8, -5);
+				leg();
+			}
+			glPopMatrix();
+		}
+		glPopMatrix();
+		glPushMatrix(); {
+			glColor3f(0.3, 0.03, 0.03);
+			glRotatef(180, 0, 0, 1);
+			glPushMatrix(); {
+				glRotatef(15, 1, 0, 0);
+				glTranslatef(8, -8, -5);
 				leg();
 			}
 			glPopMatrix();

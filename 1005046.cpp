@@ -198,6 +198,43 @@ void mergeAll() {
 		drawChandelier(chandelierAngle);
 	}
 	glPopMatrix();
+	// chairs
+	glPushMatrix(); {
+		glTranslatef(-55, 60, 15);
+		glPushMatrix(); {
+			glRotatef(215, 0, 0, 1);
+			drawChair();
+		}
+		glPopMatrix();	
+	}
+	glPopMatrix(); 
+	glPushMatrix(); {
+		glTranslatef(0, 60, 15);
+		glPushMatrix(); {
+			glRotatef(140, 0, 0, 1);
+			drawChair();
+		}
+		glPopMatrix();
+	}
+	glPopMatrix();
+	glPushMatrix(); {
+		glTranslatef(0, 0, 15);
+		glPushMatrix(); {
+			glRotatef(40, 0, 0, 1);
+			drawChair();
+		}
+		glPopMatrix();
+	}
+	glPopMatrix();
+	glPushMatrix(); {
+		glTranslatef(-55, 0, 15);
+		glPushMatrix(); {
+			glRotatef(-40, 0, 0, 1);
+			drawChair();
+		}
+		glPopMatrix();
+	}
+	glPopMatrix();
 }
 
 void display(){
@@ -264,7 +301,7 @@ void display(){
 	//cup();
 
 	// chair
-	drawChair();
+	//drawChair();
 	//leg();
 	//drawBack();
 	//drawSeat();
@@ -278,9 +315,9 @@ void display(){
 	// screen on wall
 	//drawScreen();
 
-	//drawFloor();
-	//drawWalls();
-	//mergeAll();
+	drawFloor();
+	drawWalls();
+	mergeAll();
 	/*
 	glBegin(GL_LINES); {
 	for (int i = 0; i <= n; i++) {
@@ -365,8 +402,8 @@ void animate(){
 void init(){
 	//codes for initialization
 	cameraAngle = 0;	//// init the cameraAngle
-	cameraRadius = 100;
-	cameraHeight = 50;
+	cameraRadius = 200;
+	cameraHeight = 100;
 
 	centerCamera = false;
 

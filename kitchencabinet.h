@@ -60,7 +60,7 @@ void drawKitchenCabinet(int param) {
 				glEnd();
 			}
 			glPushMatrix(); {
-				glColor3f(0.5, 0.45, 0.05);
+				glColor3f(0.9, 0.9, 0.8);
 				glTranslatef(0, 14.5, 8.7);
 				glutSolidTorus(0.2, 5, 200, 200);
 			}
