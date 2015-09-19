@@ -11,7 +11,8 @@
 #include "chimney.h"
 #include "chandelier.h"
 #include "chair.h"
-#include "test.h"
+#include "objects.h"
+#include "screen.h"
 
 using namespace std;
 
@@ -25,6 +26,8 @@ double cameraAngle;
 double cameraRadius;
 double cameraHeight;
 double chandelierAngle;
+
+bool centerCamera;
 
 
 
@@ -60,6 +63,10 @@ void mergeCabinetStove() {
 	glPopMatrix();
 }
 
+void mergeAll() {
+
+}
+
 void display(){
 
 	//clear the display
@@ -84,7 +91,8 @@ void display(){
 	//instead of CONSTANT information, we will define a circular path.
 	//	gluLookAt(-30,-30,50,	0,0,0,	0,0,1);
 
-	gluLookAt(cameraRadius * cos(cameraAngle), cameraRadius * sin(cameraAngle), cameraHeight, 0, 0, 0, 0, 0, 1);
+	if (!centerCamera) gluLookAt(cameraRadius * cos(cameraAngle), cameraRadius * sin(cameraAngle), cameraHeight, 0, 0, 0, 0, 0, 1);
+	else gluLookAt(0,0, 10, cameraRadius*cos(cameraAngle), cameraRadius*sin(cameraAngle), 10,  0, 0, 1);
 	//NOTE: the camera still CONSTANTLY looks at the center
 
 
@@ -123,9 +131,21 @@ void display(){
 	//cup();
 
 	// chair
-	drawChair();
+	//drawChair();
+	//drawLeg();
+	//drawBack();
+	//drawSeat();
 	// test
 	//drawTest();
+
+	// sink objects
+	//drawOrange();
+	//drawBowl();
+	
+	// screen on wall
+	//drawScreen();
+	
+	mergeAll();
 
 	/*
 	glBegin(GL_LINES); {
@@ -199,7 +219,7 @@ void display(){
 void animate(){
 	//codes for any changes in Camera
 
-	//cameraAngle += 0.002;	// camera will rotate at 0.002 radians per frame.
+	cameraAngle += 0.002;	// camera will rotate at 0.002 radians per frame.
 	//chandelierAngle += 0.4;
 
 	//codes for any changes in Models
@@ -213,6 +233,8 @@ void init(){
 	cameraAngle = 0;	//// init the cameraAngle
 	cameraRadius = 100;
 	cameraHeight = 50;
+
+	centerCamera = false;
 
 	chandelierAngle = 0;
 
@@ -263,6 +285,22 @@ void specialKeyListener(int key, int x, int y){
 	}
 }
 
+void keyboardListener(unsigned char key, int x, int y){
+	switch (key){
+
+	case '1':	//reverse the rotation of camera
+		centerCamera = !centerCamera;
+		break;
+
+	case 27:	//ESCAPE KEY -- simply exit
+		exit(0);
+		break;
+
+	default:
+		break;
+	}
+}
+
 int main(int argc, char **argv){
 	glutInit(&argc, argv);
 	glutInitWindowSize(700, 700);
@@ -279,6 +317,7 @@ int main(int argc, char **argv){
 	glutDisplayFunc(display);	//display callback function
 	glutIdleFunc(animate);		//what you want to do in the idle time (when no drawing is occuring)
 
+	glutKeyboardFunc(keyboardListener);
 	glutSpecialFunc(specialKeyListener);
 
 	glutMainLoop();		//The main loop of OpenGL

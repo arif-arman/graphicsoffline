@@ -50,5 +50,11 @@
     <ClInclude Include="chair.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="objects.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="screen.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

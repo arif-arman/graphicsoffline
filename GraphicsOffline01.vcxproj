@@ -20,7 +20,9 @@
     <ClInclude Include="glass.h" />
     <ClInclude Include="kitchencabinet.h" />
     <ClInclude Include="kitchenCabinetUpper.h" />
+    <ClInclude Include="objects.h" />
     <ClInclude Include="pitcher.h" />
+    <ClInclude Include="screen.h" />
     <ClInclude Include="stove.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="test.h" />
