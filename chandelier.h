@@ -8,7 +8,7 @@ void cup() {
 		quad = gluNewQuadric();
 		gluCylinder(quad, 10, 1, 5, 200, 200);
 		glPushMatrix(); {
-			glColor3f(0.7, 0.7, 0.7);
+			glColor3f(0.9, 0.9, 0.9);
 			double equ[4];
 			equ[0] = 0; equ[1] = 0; equ[2] = -1; equ[3] = 0;
 			glClipPlane(GL_CLIP_PLANE0, equ);
@@ -90,6 +90,26 @@ void drawChandelier(float angle) {
 			glColor3f(0.45, 0.35, 0.05);
 			glTranslatef(0, 0, 2);
 			gluDisk(quad, 0, 10, 200, 200);
+			glBegin(GL_LINES); {
+				glVertex3f(0, 10, 0);
+				glVertex3f(0, 10, 100);
+			}
+			glEnd();
+			glBegin(GL_LINES); {
+				glVertex3f(10, 0, 0);
+				glVertex3f(10, 0, 100);
+			}
+			glEnd();
+			glBegin(GL_LINES); {
+				glVertex3f(0, -10, 0);
+				glVertex3f(0, -10, 100);
+			}
+			glEnd();
+			glBegin(GL_LINES); {
+				glVertex3f(-10, 0, 0);
+				glVertex3f(-10, 0, 100);
+			}
+			glEnd();
 		}
 		glPopMatrix();
 		glColor3f(1, 1, 1);

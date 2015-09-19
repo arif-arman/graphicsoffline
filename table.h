@@ -4,7 +4,7 @@ void drawTable() {
 	// table
 	glPushMatrix(); {
 		//glScalef(2, 2, 2);
-		glColor3f(0.9, 0.9, 0.9);
+		glColor3f(0.4, 0.4, 0.4);
 		int n = 40;
 		float pointx = 0, pointy = 0, pointz = 20;
 		float depth = 2 + pointz;
@@ -23,7 +23,7 @@ void drawTable() {
 				}
 			}
 			glEnd();
-			pointz += 0.5;
+			pointz += 0.3;
 
 		}
 		for (int step = 0; step < 4; step++) {
@@ -52,7 +52,7 @@ void drawTable() {
 				px3 = -6; py3 = 0;
 
 			}
-			glColor3f(1, 1, 1);
+			glColor3f(0.7, 0.7, 0.7);
 			for (int k = 0; k < 2; k++) {
 				double z = 20;
 				if (k) z = 0;
@@ -70,7 +70,7 @@ void drawTable() {
 		}
 
 		//glutSolidTorus(8, 10, 50, 50);
-		glColor3f(0.7, 0.7, 0.7);
+		glColor3f(0.4, 0.4, 0.4);
 		glBegin(GL_LINE_LOOP); {
 			radius = 8;
 			n = 300;

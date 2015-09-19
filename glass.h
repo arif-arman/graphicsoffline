@@ -7,7 +7,7 @@ void drawGlass() {
 
 	glPushMatrix(); {
 		glTranslatef(0, 0, 10);
-		glColor4f(1, 1, 1, 0.5);
+		glScalef(0.2, 0.2, 0.2);
 		glPushMatrix(); {
 			glScalef(0.8, 0.8, 1);
 			glTranslatef(0, 0, 38);

@@ -63,8 +63,141 @@ void mergeCabinetStove() {
 	glPopMatrix();
 }
 
-void mergeAll() {
+void drawFloor() {
+	glPushMatrix(); {
+		glColor3f(0.3, 0.3, 0.7);
+		double x = 80;
+		glBegin(GL_QUADS); {
+			glVertex3f(x, x, 0);
+			glVertex3f(x, -x, 0);
+			glVertex3f(-x, -x, 0);
+			glVertex3f(-x, x, 0);
+		}
+		glEnd();
+	}
+	glPopMatrix();
+}
 
+void drawWall1(double x, double y) {
+	glPushMatrix(); {
+		glColor3f(0.8, 0.3, 0.3);
+		glBegin(GL_QUADS); {
+			glVertex3f(x, -x, 0);
+			glVertex3f(x, -x, y);
+			glVertex3f(-x, -x, y);
+			glVertex3f(-x, -x, 0);
+		}
+		glEnd();
+	}
+	glPopMatrix();
+}
+
+void drawWall2(double x, double y) {
+	glPushMatrix(); {
+		glColor3f(0.8, 0.3, 0.3);
+		glBegin(GL_QUADS); {
+			glVertex3f(x, x, 0);
+			glVertex3f(x, -x, 0);
+			glVertex3f(x, -x, 100);
+			glVertex3f(x, x, 100);
+		}
+		glEnd();
+	}
+	glPopMatrix();
+}
+
+
+void drawWalls() {
+	// drawWall1
+	double posx = cameraRadius*cos(cameraAngle);
+	double posy = cameraRadius*sin(cameraAngle);
+	cout << posx << " " << posy << endl;
+	
+	if ((posx >= 0 && posy >= 0) || (posx <0 && posy >=0)) drawWall1(80,100);
+	if ((posx < 0 && posy < 0) || (posx >= 0 && posy < 0)) drawWall1(-80, 100);
+	if ((posx >=0 && posy >= 0) || (posx >=0 && posy < 0)) drawWall2(-80, 100);
+	if ((posx < 0 && posy >= 0) || (posx < 0 && posy < 0)) drawWall2(80, 100);
+	
+
+}
+
+void mergeAll() {
+	// kitchen cabinet and sink
+	glPushMatrix(); {
+		glTranslatef(0, -67, 0);
+		glScalef(0.9, 1, 1);
+		mergeCabinetStove();
+	}
+	glPopMatrix();
+	// kitchen sink objects
+	glPushMatrix(); {
+		//glScalef(0.2, 0.2, 0.2);
+		for (int i = 0; i < 3; i++) {
+			glPushMatrix(); {
+				glTranslatef(30 + i*9, -60, 45);
+				drawOrange();
+			}
+			glPopMatrix();
+		}
+		for (int i = 0; i < 2; i++) {
+			glPushMatrix(); {
+				glTranslatef(34 + i * 9, -69, 45);
+				drawOrange();
+			}
+			glPopMatrix();
+			
+		}
+		glPushMatrix(); {
+			glTranslatef(-30, -62, 42);
+			drawBowl();
+		}
+		glPopMatrix();
+	}
+	glPopMatrix();
+	// screen/curtain
+	glPushMatrix(); {
+		glRotatef(90, 0, 0, 1);
+		glScalef(1, 1, 2);
+		glTranslatef(-50, -75, 0);
+		drawScreen();
+	}
+	glPopMatrix();
+	// table
+	glPushMatrix(); {
+		glTranslatef(-30, 30, 0);
+		glScalef(1.5, 1.5, 1.5);
+		drawTable();
+	}
+	glPopMatrix();
+	// table objects
+	glPushMatrix(); {
+		glColor3f(0.9, 0.9, 0.9);
+		glPushMatrix(); {
+			glTranslatef(-45, 37, 25);
+			drawGlass();
+		}
+		glPopMatrix();
+		glPushMatrix(); {
+			glTranslatef(-35, 40, 25);
+			drawGlass();
+		}
+		glPopMatrix();
+		glPushMatrix(); {
+			glColor3f(0.4, 0.6, 0.4);
+			glScalef(0.4, 0.4, 0.4);
+			glTranslatef(-80, 60, 75);
+			drawPitcher();
+		}
+		glPopMatrix();
+	}
+	glPopMatrix();
+	// chandelier
+	glPushMatrix(); {
+		glScalef(0.7, 0.7, 0.7);
+		glTranslatef(-45, 45, 120);
+		drawChandelier(chandelierAngle);
+	}
+	glPopMatrix();
 }
 
 void display(){
@@ -144,9 +277,10 @@ void display(){
 	
 	// screen on wall
 	//drawScreen();
-	
-	mergeAll();
 
+	drawFloor();
+	drawWalls();
+	mergeAll();
 	/*
 	glBegin(GL_LINES); {
 	for (int i = 0; i <= n; i++) {
@@ -220,7 +354,7 @@ void animate(){
 	//codes for any changes in Camera
 
 	cameraAngle += 0.002;	// camera will rotate at 0.002 radians per frame.
-	//chandelierAngle += 0.4;
+	chandelierAngle -= 0.8;
 
 	//codes for any changes in Models
 
@@ -231,8 +365,8 @@ void animate(){
 void init(){
 	//codes for initialization
 	cameraAngle = 0;	//// init the cameraAngle
-	cameraRadius = 100;
-	cameraHeight = 50;
+	cameraRadius = 200;
+	cameraHeight = 100;
 
 	centerCamera = false;
 
