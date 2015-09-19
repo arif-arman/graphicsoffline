@@ -264,8 +264,8 @@ void display(){
 	//cup();
 
 	// chair
-	//drawChair();
-	//drawLeg();
+	drawChair();
+	//leg();
 	//drawBack();
 	//drawSeat();
 	// test
@@ -278,9 +278,9 @@ void display(){
 	// screen on wall
 	//drawScreen();
 
-	drawFloor();
-	drawWalls();
-	mergeAll();
+	//drawFloor();
+	//drawWalls();
+	//mergeAll();
 	/*
 	glBegin(GL_LINES); {
 	for (int i = 0; i <= n; i++) {
@@ -365,8 +365,8 @@ void animate(){
 void init(){
 	//codes for initialization
 	cameraAngle = 0;	//// init the cameraAngle
-	cameraRadius = 200;
-	cameraHeight = 100;
+	cameraRadius = 100;
+	cameraHeight = 50;
 
 	centerCamera = false;
 
